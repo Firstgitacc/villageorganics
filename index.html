@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Village Freshness, Delivered to Your Doorstep | 100% Organic Village Products</title>
+    <meta name="description" content="Buy pure organic coconuts, cold-pressed sesame oil, and village-grown products. Direct from certified farmers, 100% chemical-free, traditionally processed. Free delivery across India.">
+    <meta name="keywords" content="organic coconut, cold pressed sesame oil, village organic products, chemical free food, traditional farming, organic groceries India, pure sesame oil, fresh coconuts online, farm to table India, sustainable farming">
+    <meta name="author" content="Village Organics">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://villageorganics.com">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Village Freshness, Delivered to Your Doorstep | 100% Organic">
+    <meta property="og:description" content="Sustainably sourced, minimally processed, 100% chemical-free organic products from village farmers.">
+    <meta property="og:image" content="images/organic-products-social.jpg">
+    <meta property="og:url" content="https://villageorganics.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Village Organics">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Village Freshness, Delivered to Your Doorstep">
+    <meta name="twitter:description" content="100% organic products direct from village farmers. Chemical-free, traditionally processed.">
+    <meta name="twitter:image" content="images/organic-products-social.jpg">
+    
+    <!-- Structured Data (Schema.org) for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Village Organics",
+        "description": "Organic village products including coconuts and cold-pressed sesame oil",
+        "url": "https://villageorganics.com",
+        "logo": "https://villageorganics.com/images/logo.png",
+        "image": "https://villageorganics.com/images/store.jpg",
+        "priceRange": "₹₹",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IN"
+        },
+        "paymentAccepted": "Cash, Credit Card, UPI",
+        "openingHours": "Mo-Su 00:00-23:59",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Organic Village Products",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "Cold-Pressed Sesame Oil",
+                        "description": "Traditional cold-pressed sesame oil from village farms"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "Fresh Village Coconuts",
+                        "description": "Hand-picked organic coconuts at peak maturity"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        :root {
+            /* Natural, Earthy Color Palette */
+            --earth-dark: #2c1810;
+            --earth-brown: #5c3d2e;
+            --earth-light: #8b6f47;
+            --sage-green: #6b8e23;
+            --forest-green: #2d5016;
+            --cream: #faf6f1;
+            --sand: #e8dcc4;
+            --terracotta: #c9653c;
+            --gold: #d4a574;
+            --white: #ffffff;
+            --text-dark: #2c1810;
+            --text-light: #5c3d2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Lora', serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* Organic texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(92, 61, 46, 0.02) 2px, rgba(92, 61, 46, 0.02) 4px);
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 246, 241, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--earth-light);
+            box-shadow: 0 2px 20px rgba(44, 24, 16, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--terracotta);
+            font-style: italic;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sage-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--sage-green);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: 
+                linear-gradient(135deg, rgba(107, 142, 35, 0.05) 0%, rgba(201, 101, 60, 0.05) 100%),
+                var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(107, 142, 35, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, 50px) rotate(180deg); }
+        }
+        
+        .hero .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--earth-dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .hero-content .highlight {
+            color: var(--sage-green);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-content .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: rgba(107, 142, 35, 0.2);
+            z-index: -1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+        
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--forest-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--sage-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1.2rem 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: var(--sage-green);
+            color: white;
+            border-color: var(--sage-green);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--forest-green);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 0;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--earth-brown);
+            border-color: var(--earth-brown);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--earth-brown);
+            color: white;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image-container {
+            position: relative;
+            border: 8px solid var(--earth-light);
+            box-shadow: 
+                20px 20px 0 rgba(107, 142, 35, 0.2),
+                -20px -20px 0 rgba(201, 101, 60, 0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--earth-dark);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .feature-card {
+            background: var(--cream);
+            padding: 3rem;
+            border: 3px solid var(--earth-light);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, var(--sage-green), var(--terracotta));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(44, 24, 16, 0.15);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--sage-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--earth-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
+            background: 
+                linear-gradient(135deg, rgba(107, 142, 35, 0.03) 0%, rgba(250, 246, 241, 1) 100%);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .product-card {
+            background: white;
+            border: 3px solid var(--sand);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--sage-green);
+            box-shadow: 0 25px 50px rgba(44, 24, 16, 0.2);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--earth-light), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 24, 16, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--terracotta);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-content {
+            padding: 2.5rem;
+        }
+        
+        .product-category {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--sage-green);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--earth-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .product-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .product-features li::before {
+            content: '✓';
+            color: var(--sage-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--sand);
+        }
+        
+        .product-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+        
+        .btn-small {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--earth-dark);
+            color: var(--cream);
+        }
+        
+        .testimonials .section-label {
+            color: var(--gold);
+        }
+        
+        .testimonials .section-title,
+        .testimonials .section-subtitle {
+            color: var(--cream);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(250, 246, 241, 0.05);
+            padding: 2.5rem;
+            border: 2px solid rgba(250, 246, 241, 0.1);
+            border-left: 5px solid var(--terracotta);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--sand);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--sage-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .author-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-info p {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: 
+                linear-gradient(135deg, rgba(107, 142, 35, 0.9), rgba(45, 80, 22, 0.95)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="50" opacity="0.1">🌾</text></svg>');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        .btn-cta {
+            background: white;
+            color: var(--forest-green);
+            border-color: white;
+            font-size: 1.1rem;
+            padding: 1.5rem 3rem;
+        }
+        
+        .btn-cta:hover {
+            background: var(--terracotta);
+            color: white;
+            border-color: var(--terracotta);
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--earth-dark);
+            color: var(--sand);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--sand);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(250, 246, 241, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--sage-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(250, 246, 241, 0.2);
+            text-align: center;
+            color: var(--sand);
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .trust-badges {
+                justify-content: center;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .hero-image-container {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .products-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Village <span>Organics</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    <span class="highlight">Village Freshness</span>,<br>
+                    Delivered to Your<br>
+                    Doorstep
+                </h1>
+                <p class="hero-subtitle">
+                    Sustainably sourced, minimally processed, and 100% chemical-free. 
+                    Experience the true taste of coconuts, cold-pressed sesame oil, 
+                    and seasonal village staples.
+                </p>
+                
+                <div class="trust-badges">
+                    <div class="badge">
+                        <div class="badge-icon">✓</div>
+                        <span>100% Organic</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon">🌾</div>
+                        <span>Farm Fresh</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon">🚫</div>
+                        <span>No Chemicals</span>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Crect fill='%236b8e23' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='150' fill='white' font-family='serif' opacity='0.3'%3E🥥🌾%3C/text%3E%3C/svg%3E" alt="Fresh organic coconuts and sesame from village farms">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Why Choose Us</div>
+                <h2 class="section-title">From Our Roots to Your Table</h2>
+                <p class="section-subtitle">
+                    We believe in preserving traditional farming methods while delivering 
+                    the purest, most authentic organic products to your home.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Direct from Source</h3>
+                    <p>
+                        We bypass the middleman and work directly with certified village farmers 
+                        to ensure fair trade and maximum freshness. Every product you receive 
+                        comes straight from the farms where it was lovingly grown and harvested.
+                    </p>
+                </div>
+                
+                <div class="feature-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">🏺</div>
+                    <h3>Traditional Methods</h3>
+                    <p>
+                        Our sesame oil is cold-pressed using traditional wooden mills (ghani) 
+                        to preserve every drop of nutrition and natural aroma. No heat, no chemicals, 
+                        just the way our grandparents made it—pure and wholesome.
+                    </p>
+                </div>
+                
+                <div class="feature-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">🚫</div>
+                    <h3>No Hidden Chemicals</h3>
+                    <p>
+                        Just like in the old days—no synthetic pesticides, no artificial preservatives, 
+                        and absolutely no GMOs. Our products are certified organic and tested regularly 
+                        to ensure they meet the highest purity standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Products</div>
+                <h2 class="section-title">Pure Village Treasures</h2>
+                <p class="section-subtitle">
+                    Each product tells the story of generations of farming wisdom, 
+                    sustainable practices, and unwavering commitment to quality.
+                </p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        🛢️
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Traditional Oil</div>
+                        <h3 class="product-title">Cold-Pressed Sesame Oil</h3>
+                        <p class="product-description">
+                            Rich, nutty, and golden. Sourced from sun-dried village seeds, this oil is 
+                            perfect for traditional cooking and holistic wellness. Each batch is 
+                            cold-pressed using age-old wooden mills to retain maximum nutrients.
+                        </p>
+                        <ul class="product-features">
+                            <li>100% pure, unrefined sesame oil</li>
+                            <li>Rich in antioxidants and Omega-3</li>
+                            <li>Cold-pressed with traditional methods</li>
+                            <li>Chemical-free & preservative-free</li>
+                            <li>Perfect for cooking, massage & hair care</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">₹450/L</div>
+                            <a href="#" class="btn btn-primary btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #8b6f47, #c9653c);">
+                        🥥
+                        <span class="product-badge">Farm Fresh</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Fresh Produce</div>
+                        <h3 class="product-title">Fresh Village Coconuts</h3>
+                        <p class="product-description">
+                            Hand-picked at peak maturity. Whether for pure coconut water or fresh 
+                            grated meat, our coconuts bring the authentic taste of the village to 
+                            your kitchen. Harvested daily and delivered within 48 hours.
+                        </p>
+                        <ul class="product-features">
+                            <li>Handpicked from organic farms</li>
+                            <li>Rich in natural electrolytes</li>
+                            <li>No pesticides or chemicals</li>
+                            <li>Fresh tender coconut water</li>
+                            <li>Delivered within 48 hours of harvest</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">₹60/pc</div>
+                            <a href="#" class="btn btn-primary btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #5c3d2e, #8b6f47);">
+                        🌾
+                        <span class="product-badge">New Arrival</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Whole Grains</div>
+                        <h3 class="product-title">Organic Sesame Seeds</h3>
+                        <p class="product-description">
+                            Premium white sesame seeds harvested from our partner farms. Sun-dried 
+                            naturally to preserve nutrients. Perfect for traditional sweets, tahini, 
+                            and as a nutritious addition to your daily meals.
+                        </p>
+                        <ul class="product-features">
+                            <li>100% organic certification</li>
+                            <li>Rich in calcium & protein</li>
+                            <li>Sun-dried naturally</li>
+                            <li>No artificial processing</li>
+                            <li>Versatile kitchen staple</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">₹280/kg</div>
+                            <a href="#" class="btn btn-primary btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Customer Stories</div>
+                <h2 class="section-title">What Our Families Say</h2>
+                <p class="section-subtitle">
+                    Real stories from real people who've experienced the difference that 
+                    authentic, chemical-free village products can make.
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "After switching to Village Organics' sesame oil, my family's health has 
+                        improved dramatically. The purity and aroma are unmatched. It's like having 
+                        my grandmother's kitchen back!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Mumbai, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "The coconuts are incredibly fresh! We get them within two days of harvest. 
+                        My kids love the sweet water, and I use the meat for traditional recipes. 
+                        Worth every rupee."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Bangalore, Karnataka</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "As someone committed to organic living, finding Village Organics was a blessing. 
+                        The transparency about sourcing and the connection to village farmers makes 
+                        all the difference. Highly recommended!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Anita Desai</h4>
+                            <p>Pune, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Start Your Journey to Natural Living</h2>
+            <p>
+                Join thousands of families who've made the switch to authentic, 
+                chemical-free village products. Your health deserves the best.
+            </p>
+            <a href="#products" class="btn btn-cta">Shop Organic Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Village Organics</h3>
+                    <p>
+                        Bringing you the finest organic products directly from certified village 
+                        farms to your doorstep. Pure, fresh, and traditionally made.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">✉</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#products">Our Products</a>
+                    <a href="#testimonials">Customer Reviews</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Return Policy</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="#">Cold-Pressed Oils</a>
+                    <a href="#">Fresh Coconuts</a>
+                    <a href="#">Organic Seeds</a>
+                    <a href="#">Village Honey</a>
+                    <a href="#">Whole Grains</a>
+                    <a href="#">Seasonal Produce</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📧 info@villageorganics.com</p>
+                    <p>📱 +91 99866186594</p>
+                    <p>⏰ Mon-Sat: 9 AM - 7 PM</p>
+                    <p>📍 Village Farms Network, India</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Village Organics. All rights reserved. Certified Organic | Chemical-Free | Farm Fresh</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .product-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
