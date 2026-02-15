@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,72 +8,29 @@
     <!-- SEO Meta Tags -->
     <title>Village Freshness, Delivered to Your Doorstep | 100% Organic Village Products</title>
     <meta name="description" content="Buy pure organic coconuts, cold-pressed sesame oil, and village-grown products. Direct from certified farmers, 100% chemical-free, traditionally processed. Free delivery across India.">
-    <meta name="keywords" content="organic coconut, cold pressed sesame oil, village organic products, chemical free food, traditional farming, organic groceries India, pure sesame oil, fresh coconuts online, farm to table India, sustainable farming">
-    <meta name="author" content="Village Organics">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://villageorganics.com">
+    <meta name="keywords" content="organic coconut, cold pressed sesame oil, village organic products, chemical free food, traditional farming, organic groceries India">
     
-    <!-- Open Graph Meta Tags for Social Sharing -->
-    <meta property="og:title" content="Village Freshness, Delivered to Your Doorstep | 100% Organic">
-    <meta property="og:description" content="Sustainably sourced, minimally processed, 100% chemical-free organic products from village farmers.">
-    <meta property="og:image" content="images/organic-products-social.jpg">
-    <meta property="og:url" content="https://villageorganics.com">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Village Organics">
+    <!-- Razorpay Checkout -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Village Freshness, Delivered to Your Doorstep">
-    <meta name="twitter:description" content="100% organic products direct from village farmers. Chemical-free, traditionally processed.">
-    <meta name="twitter:image" content="images/organic-products-social.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-256.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-256.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
     
-    <!-- Structured Data (Schema.org) for Rich Snippets -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Store",
-        "name": "Village Organics",
-        "description": "Organic village products including coconuts and cold-pressed sesame oil",
-        "url": "https://villageorganics.com",
-        "logo": "https://villageorganics.com/images/logo.png",
-        "image": "https://villageorganics.com/images/store.jpg",
-        "priceRange": "₹₹",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IN"
-        },
-        "paymentAccepted": "Cash, Credit Card, UPI",
-        "openingHours": "Mo-Su 00:00-23:59",
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Organic Village Products",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "Cold-Pressed Sesame Oil",
-                        "description": "Traditional cold-pressed sesame oil from village farms"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "Fresh Village Coconuts",
-                        "description": "Hand-picked organic coconuts at peak maturity"
-                    }
-                }
-            ]
-        }
-    }
-    </script>
+    <!-- Font Awesome for Icons -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
         
         :root {
-            /* Natural, Earthy Color Palette */
             --earth-dark: #2c1810;
             --earth-brown: #5c3d2e;
             --earth-light: #8b6f47;
@@ -105,27 +63,13 @@
             overflow-x: hidden;
         }
         
-        /* Organic texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(92, 61, 46, 0.02) 2px, rgba(92, 61, 46, 0.02) 4px);
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(250, 246, 241, 0.95);
+            background: rgba(250, 246, 241, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 2px solid var(--earth-light);
@@ -135,7 +79,7 @@
         nav .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -143,11 +87,12 @@
         
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: clamp(1.3rem, 4vw, 2rem);
             font-weight: 700;
             color: var(--forest-green);
             text-transform: uppercase;
             letter-spacing: 2px;
+            white-space: nowrap;
         }
         
         .logo span {
@@ -155,9 +100,61 @@
             font-style: italic;
         }
         
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .cart-button {
+            position: relative;
+            background: var(--sage-green);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-button:hover {
+            background: var(--forest-green);
+            transform: scale(1.05);
+        }
+        
+        .cart-count {
+            background: var(--terracotta);
+            color: white;
+            border-radius: 50%;
+            min-width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0 0.3rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--earth-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
         
@@ -165,7 +162,7 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--text-light);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -197,7 +194,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 1.5rem 4rem;
             background: 
                 linear-gradient(135deg, rgba(107, 142, 35, 0.05) 0%, rgba(201, 101, 60, 0.05) 100%),
                 var(--cream);
@@ -209,9 +206,9 @@
             content: '';
             position: absolute;
             top: -50%;
-            right: -10%;
-            width: 800px;
-            height: 800px;
+            right: -20%;
+            width: 600px;
+            height: 600px;
             background: radial-gradient(circle, rgba(107, 142, 35, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 20s infinite ease-in-out;
@@ -219,23 +216,24 @@
         
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-50px, 50px) rotate(180deg); }
+            50% { transform: translate(-30px, 30px) rotate(180deg); }
         }
         
         .hero .container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            gap: 3rem;
             align-items: center;
             position: relative;
             z-index: 1;
+            text-align: center;
         }
         
         .hero-content h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-size: clamp(2.2rem, 8vw, 5.5rem);
             font-weight: 700;
             line-height: 1.1;
             color: var(--earth-dark);
@@ -255,32 +253,33 @@
             bottom: 5px;
             left: 0;
             width: 100%;
-            height: 12px;
+            height: 8px;
             background: rgba(107, 142, 35, 0.2);
             z-index: -1;
         }
         
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
             color: var(--text-light);
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem;
             line-height: 1.8;
-            max-width: 600px;
+            max-width: 700px;
         }
         
         .trust-badges {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
         .badge {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
             font-weight: 600;
             color: var(--forest-green);
             text-transform: uppercase;
@@ -288,28 +287,29 @@
         }
         
         .badge-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: var(--sage-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
         .btn {
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
             text-transform: uppercase;
@@ -318,6 +318,9 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
         }
         
         .btn-primary {
@@ -326,20 +329,9 @@
             border-color: var(--sage-green);
         }
         
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+        .btn-primary:hover {
             background: var(--forest-green);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-        
-        .btn-primary:hover::before {
-            left: 0;
+            border-color: var(--forest-green);
         }
         
         .btn-secondary {
@@ -355,14 +347,16 @@
         
         .hero-image {
             position: relative;
+            max-width: 500px;
+            margin: 0 auto;
         }
         
         .hero-image-container {
             position: relative;
-            border: 8px solid var(--earth-light);
+            border: 6px solid var(--earth-light);
             box-shadow: 
-                20px 20px 0 rgba(107, 142, 35, 0.2),
-                -20px -20px 0 rgba(201, 101, 60, 0.1);
+                15px 15px 0 rgba(107, 142, 35, 0.2),
+                -15px -15px 0 rgba(201, 101, 60, 0.1);
         }
         
         .hero-image img {
@@ -370,10 +364,9 @@
             display: block;
         }
         
-        /* Why Choose Us Section */
-        .why-choose {
-            padding: 6rem 2rem;
-            background: var(--white);
+        /* Section Styling */
+        .section {
+            padding: 4rem 1.5rem;
         }
         
         .container {
@@ -383,12 +376,12 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         
         .section-label {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--terracotta);
             text-transform: uppercase;
@@ -398,74 +391,58 @@
         
         .section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 700;
             color: var(--earth-dark);
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.8;
         }
         
+        /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
         .feature-card {
-            background: var(--cream);
-            padding: 3rem;
+            background: var(--white);
+            padding: 2rem;
             border: 3px solid var(--earth-light);
-            position: relative;
             transition: all 0.4s ease;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(135deg, var(--sage-green), var(--terracotta));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(44, 24, 16, 0.15);
-        }
-        
-        .feature-card:hover::before {
-            opacity: 1;
+            border-color: var(--sage-green);
         }
         
         .feature-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: var(--sage-green);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .feature-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--earth-dark);
             margin-bottom: 1rem;
@@ -474,20 +451,15 @@
         .feature-card p {
             color: var(--text-light);
             line-height: 1.8;
+            font-size: 0.95rem;
         }
         
-        /* Products Section */
-        .products {
-            padding: 6rem 2rem;
-            background: 
-                linear-gradient(135deg, rgba(107, 142, 35, 0.03) 0%, rgba(250, 246, 241, 1) 100%);
-        }
-        
+        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
         .product-card {
@@ -495,7 +467,6 @@
             border: 3px solid var(--sand);
             overflow: hidden;
             transition: all 0.4s ease;
-            position: relative;
         }
         
         .product-card:hover {
@@ -506,112 +477,502 @@
         
         .product-image {
             width: 100%;
-            height: 350px;
+            height: 250px;
             background: linear-gradient(135deg, var(--earth-light), var(--gold));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: white;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .product-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(44, 24, 16, 0.1);
         }
         
         .product-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             background: var(--terracotta);
             color: white;
-            padding: 0.5rem 1.2rem;
+            padding: 0.4rem 1rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .product-content {
-            padding: 2.5rem;
+            padding: 1.5rem;
         }
         
         .product-category {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--sage-green);
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
         
         .product-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--earth-dark);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
         
         .product-description {
             color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
         
         .product-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .product-features li {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             color: var(--text-light);
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
+            font-size: 0.85rem;
         }
         
         .product-features li::before {
             content: '✓';
             color: var(--sage-green);
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
         
         .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 2px solid var(--sand);
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         
         .product-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+        
+        .btn-small {
+            padding: 0.7rem 1.3rem;
+            font-size: 0.85rem;
+        }
+        
+        /* Quantity Selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .quantity-btn {
+            background: var(--sage-green);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--forest-green);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 2px solid var(--sand);
+            padding: 0.3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 24, 16, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        .cart-modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 5rem;
+        }
+        
+        .cart-content {
+            background: var(--cream);
+            max-width: 600px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 2rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--earth-light);
+        }
+        
+        .cart-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--earth-dark);
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-cart:hover {
+            color: var(--terracotta);
+            transform: rotate(90deg);
+        }
+        
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            margin-bottom: 1rem;
+            border: 2px solid var(--sand);
+            border-radius: 5px;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--earth-light), var(--gold));
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--earth-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .cart-item-price {
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .remove-item {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-item:hover {
+            background: var(--earth-dark);
+        }
+        
+        .cart-summary {
+            background: white;
+            padding: 1.5rem;
+            border: 3px solid var(--earth-light);
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--sand);
+        }
+        
+        .cart-total-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--earth-dark);
+        }
+        
+        .cart-total-amount {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             font-weight: 700;
             color: var(--terracotta);
         }
         
-        .btn-small {
-            padding: 0.8rem 1.5rem;
-            font-size: 0.9rem;
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .cart-empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
+        .cart-empty-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Payment Options */
+        .payment-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-btn {
+            width: 100%;
+            padding: 1rem;
+            background: white;
+            border: 2px solid var(--earth-light);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .payment-btn:hover {
+            border-color: var(--sage-green);
+            background: rgba(107, 142, 35, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: var(--cream);
+            border-radius: 50%;
+        }
+        
+        /* PhonePe QR Modal */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 24, 16, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .qr-modal.active {
+            display: flex;
+        }
+        
+        .qr-content {
+            background: white;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .qr-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        
+        .qr-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--earth-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 1rem auto;
+            background: white;
+            border: 5px solid var(--sage-green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+        
+        .qr-instructions {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .qr-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+        
+        .upi-id {
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--earth-dark);
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        }
+        
+        /* Quick Order Float Button */
+        .quick-order-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--terracotta);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(201, 101, 60, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-order-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(201, 101, 60, 0.7);
         }
         
         /* Testimonials */
         .testimonials {
-            padding: 6rem 2rem;
             background: var(--earth-dark);
             color: var(--cream);
         }
@@ -627,22 +988,23 @@
         
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
         .testimonial-card {
             background: rgba(250, 246, 241, 0.05);
-            padding: 2.5rem;
+            padding: 2rem;
             border: 2px solid rgba(250, 246, 241, 0.1);
             border-left: 5px solid var(--terracotta);
+            border-radius: 5px;
         }
         
         .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
             font-style: italic;
             color: var(--sand);
         }
@@ -654,106 +1016,64 @@
         }
         
         .author-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--sage-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: white;
+            flex-shrink: 0;
         }
         
         .author-info h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
         
         .author-info p {
             color: var(--gold);
-            font-size: 0.9rem;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 2rem;
-            background: 
-                linear-gradient(135deg, rgba(107, 142, 35, 0.9), rgba(45, 80, 22, 0.95)),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="50" opacity="0.1">🌾</text></svg>');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            color: white;
-        }
-        
-        .cta-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        
-        .btn-cta {
-            background: white;
-            color: var(--forest-green);
-            border-color: white;
-            font-size: 1.1rem;
-            padding: 1.5rem 3rem;
-        }
-        
-        .btn-cta:hover {
-            background: var(--terracotta);
-            color: white;
-            border-color: var(--terracotta);
-            transform: scale(1.05);
+            font-size: 0.85rem;
         }
         
         /* Footer */
         footer {
             background: var(--earth-dark);
             color: var(--sand);
-            padding: 4rem 2rem 2rem;
+            padding: 3rem 1.5rem 2rem;
         }
         
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
         .footer-section h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--gold);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .footer-section p,
         .footer-section a {
             color: var(--sand);
-            line-height: 1.8;
+            line-height: 1.7;
             text-decoration: none;
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
         
@@ -763,21 +1083,23 @@
         
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
         
         .social-link {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: rgba(250, 246, 241, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--gold);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .social-link:hover {
@@ -793,57 +1115,70 @@
             border-top: 1px solid rgba(250, 246, 241, 0.2);
             text-align: center;
             color: var(--sand);
+            font-size: 0.9rem;
         }
         
         /* Responsive */
-        @media (max-width: 968px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-            
-            .trust-badges {
-                justify-content: center;
-            }
-            
-            .cta-buttons {
-                justify-content: center;
-            }
-            
-            .hero-image-container {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-            
+        @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
             
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
             .products-grid,
-            .features-grid,
-            .testimonials-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .cart-content {
+                padding: 1.5rem;
+            }
+            
+            .whatsapp-float,
+            .quick-order-float {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 75px;
+            }
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        @media (max-width: 480px) {
+            .badge span {
+                font-size: 0.7rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .product-footer {
+                flex-direction: column;
+                align-items: flex-start;
             }
-        }
-        
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out both;
+            
+            .btn-small {
+                width: 100%;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+            }
+            
+            .cart-item-image {
+                width: 100%;
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -852,13 +1187,22 @@
     <nav>
         <div class="container">
             <div class="logo">Village <span>Organics</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="cart-button" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -907,7 +1251,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="why-choose" id="about">
+    <section class="section" id="about" style="background: var(--white);">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Why Choose Us</div>
@@ -919,7 +1263,7 @@
             </div>
             
             <div class="features-grid">
-                <div class="feature-card fade-in">
+                <div class="feature-card">
                     <div class="feature-icon">🌱</div>
                     <h3>Direct from Source</h3>
                     <p>
@@ -929,7 +1273,7 @@
                     </p>
                 </div>
                 
-                <div class="feature-card fade-in" style="animation-delay: 0.1s;">
+                <div class="feature-card">
                     <div class="feature-icon">🏺</div>
                     <h3>Traditional Methods</h3>
                     <p>
@@ -939,7 +1283,7 @@
                     </p>
                 </div>
                 
-                <div class="feature-card fade-in" style="animation-delay: 0.2s;">
+                <div class="feature-card">
                     <div class="feature-icon">🚫</div>
                     <h3>No Hidden Chemicals</h3>
                     <p>
@@ -953,7 +1297,7 @@
     </section>
 
     <!-- Products Section -->
-    <section class="products" id="products">
+    <section class="section" id="products" style="background: linear-gradient(135deg, rgba(107, 142, 35, 0.03) 0%, rgba(250, 246, 241, 1) 100%);">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Our Products</div>
@@ -974,20 +1318,20 @@
                         <div class="product-category">Traditional Oil</div>
                         <h3 class="product-title">Cold-Pressed Sesame Oil</h3>
                         <p class="product-description">
-                            Rich, nutty, and golden. Sourced from sun-dried village seeds, this oil is 
-                            perfect for traditional cooking and holistic wellness. Each batch is 
-                            cold-pressed using age-old wooden mills to retain maximum nutrients.
+                            Rich, nutty, and golden. Sourced from sun-dried village seeds, perfect for 
+                            traditional cooking and holistic wellness.
                         </p>
                         <ul class="product-features">
                             <li>100% pure, unrefined sesame oil</li>
                             <li>Rich in antioxidants and Omega-3</li>
                             <li>Cold-pressed with traditional methods</li>
                             <li>Chemical-free & preservative-free</li>
-                            <li>Perfect for cooking, massage & hair care</li>
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹450/L</div>
-                            <a href="#" class="btn btn-primary btn-small">Add to Cart</a>
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed Sesame Oil', 450, '🛢️')">
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1001,20 +1345,20 @@
                         <div class="product-category">Fresh Produce</div>
                         <h3 class="product-title">Fresh Village Coconuts</h3>
                         <p class="product-description">
-                            Hand-picked at peak maturity. Whether for pure coconut water or fresh 
-                            grated meat, our coconuts bring the authentic taste of the village to 
-                            your kitchen. Harvested daily and delivered within 48 hours.
+                            Hand-picked at peak maturity. Perfect coconut water and fresh 
+                            grated meat, delivered within 48 hours.
                         </p>
                         <ul class="product-features">
                             <li>Handpicked from organic farms</li>
                             <li>Rich in natural electrolytes</li>
                             <li>No pesticides or chemicals</li>
-                            <li>Fresh tender coconut water</li>
                             <li>Delivered within 48 hours of harvest</li>
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹60/pc</div>
-                            <a href="#" class="btn btn-primary btn-small">Add to Cart</a>
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Fresh Village Coconuts', 60, '🥥')">
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1028,20 +1372,20 @@
                         <div class="product-category">Whole Grains</div>
                         <h3 class="product-title">Organic Sesame Seeds</h3>
                         <p class="product-description">
-                            Premium white sesame seeds harvested from our partner farms. Sun-dried 
-                            naturally to preserve nutrients. Perfect for traditional sweets, tahini, 
-                            and as a nutritious addition to your daily meals.
+                            Premium white sesame seeds harvested from our partner farms. 
+                            Sun-dried naturally to preserve nutrients.
                         </p>
                         <ul class="product-features">
                             <li>100% organic certification</li>
                             <li>Rich in calcium & protein</li>
                             <li>Sun-dried naturally</li>
-                            <li>No artificial processing</li>
                             <li>Versatile kitchen staple</li>
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹280/kg</div>
-                            <a href="#" class="btn btn-primary btn-small">Add to Cart</a>
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Organic Sesame Seeds', 280, '🌾')">
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1050,7 +1394,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="section testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Customer Stories</div>
@@ -1065,8 +1409,7 @@
                 <div class="testimonial-card">
                     <p class="testimonial-text">
                         "After switching to Village Organics' sesame oil, my family's health has 
-                        improved dramatically. The purity and aroma are unmatched. It's like having 
-                        my grandmother's kitchen back!"
+                        improved dramatically. The purity and aroma are unmatched!"
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">P</div>
@@ -1080,8 +1423,7 @@
                 <div class="testimonial-card">
                     <p class="testimonial-text">
                         "The coconuts are incredibly fresh! We get them within two days of harvest. 
-                        My kids love the sweet water, and I use the meat for traditional recipes. 
-                        Worth every rupee."
+                        My kids love the sweet water. Worth every rupee."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">R</div>
@@ -1094,9 +1436,8 @@
                 
                 <div class="testimonial-card">
                     <p class="testimonial-text">
-                        "As someone committed to organic living, finding Village Organics was a blessing. 
-                        The transparency about sourcing and the connection to village farmers makes 
-                        all the difference. Highly recommended!"
+                        "Finding Village Organics was a blessing. The transparency about sourcing 
+                        and connection to village farmers makes all the difference!"
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">A</div>
@@ -1110,18 +1451,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Start Your Journey to Natural Living</h2>
-            <p>
-                Join thousands of families who've made the switch to authentic, 
-                chemical-free village products. Your health deserves the best.
-            </p>
-            <a href="#products" class="btn btn-cta">Shop Organic Now</a>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -1130,13 +1459,15 @@
                     <h3>Village Organics</h3>
                     <p>
                         Bringing you the finest organic products directly from certified village 
-                        farms to your doorstep. Pure, fresh, and traditionally made.
+                        farms to your doorstep.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link">f</a>
-                        <a href="#" class="social-link">📷</a>
-                        <a href="#" class="social-link">in</a>
-                        <a href="#" class="social-link">✉</a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/919866186594?text=Hi! I'm interested in your organic products" class="social-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1146,26 +1477,22 @@
                     <a href="#about">About Us</a>
                     <a href="#products">Our Products</a>
                     <a href="#testimonials">Customer Reviews</a>
-                    <a href="#">Shipping Policy</a>
-                    <a href="#">Return Policy</a>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Products</h3>
-                    <a href="#">Cold-Pressed Oils</a>
-                    <a href="#">Fresh Coconuts</a>
-                    <a href="#">Organic Seeds</a>
-                    <a href="#">Village Honey</a>
-                    <a href="#">Whole Grains</a>
-                    <a href="#">Seasonal Produce</a>
+                    <a href="#products">Cold-Pressed Oils</a>
+                    <a href="#products">Fresh Coconuts</a>
+                    <a href="#products">Organic Seeds</a>
+                    <a href="#products">Village Honey</a>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact Us</h3>
-                    <p>📧 info@villageorganics.com</p>
-                    <p>📱 +91 99866186594</p>
-                    <p>⏰ Mon-Sat: 9 AM - 7 PM</p>
-                    <p>📍 Village Farms Network, India</p>
+                    <p><i class="fas fa-envelope"></i> info@villageorganics.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9866186594</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9 AM - 7 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Village Farms Network, India</p>
                 </div>
             </div>
             
@@ -1175,7 +1502,271 @@
         </div>
     </footer>
 
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            
+            <div id="cartItemsContainer" class="cart-items"></div>
+            
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <div class="cart-total">
+                    <span class="cart-total-label">Total Amount:</span>
+                    <span class="cart-total-amount" id="cartTotalAmount">₹0</span>
+                </div>
+                
+                <div class="payment-options">
+                    <button class="payment-btn" onclick="payWithRazorpay()">
+                        <div class="payment-icon">💳</div>
+                        <div>
+                            <div>Pay with Razorpay</div>
+                            <small style="color: var(--text-light); font-weight: 400;">Card, UPI, Net Banking, Wallets</small>
+                        </div>
+                    </button>
+                    
+                    <button class="payment-btn" onclick="showPhonePeQR()">
+                        <div class="payment-icon">📱</div>
+                        <div>
+                            <div>Pay with PhonePe</div>
+                            <small style="color: var(--text-light); font-weight: 400;">Scan QR Code</small>
+                        </div>
+                    </button>
+                    
+                    <button class="payment-btn" onclick="orderOnWhatsApp()">
+                        <div class="payment-icon" style="background: #25D366; color: white;"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <div>Order on WhatsApp</div>
+                            <small style="color: var(--text-light); font-weight: 400;">Chat with us directly</small>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cart-empty" id="cartEmpty">
+                <div class="cart-empty-icon">🛒</div>
+                <p class="cart-empty-text">Your cart is empty</p>
+                <button class="btn btn-primary" onclick="toggleCart()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PhonePe QR Modal -->
+    <div class="qr-modal" id="qrModal">
+        <div class="qr-content">
+            <button class="qr-close" onclick="closeQRModal()">×</button>
+            <h3 class="qr-title">Scan to Pay with PhonePe</h3>
+            <div class="qr-code">📱</div>
+            <p class="qr-instructions">
+                Scan this QR code with any UPI app<br>
+                (PhonePe, Google Pay, Paytm, etc.)
+            </p>
+            <div class="qr-amount" id="qrAmount">₹0</div>
+            <div class="upi-id">villageorganics@ybl</div>
+            <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">
+                After payment, please WhatsApp the screenshot to<br>
+                <strong>+91 9866186594</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919866186594?text=Hi! I want to order organic products from Village Organics" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Quick Order Float Button -->
+    <button class="quick-order-float" onclick="toggleCart()" title="View Cart">
+        <i class="fas fa-shopping-bag"></i>
+    </button>
+
     <script>
+        // Cart Management
+        let cart = [];
+
+        function addToCart(name, price, emoji) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    emoji: emoji,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${name} added to cart!`);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity < 1) {
+                cart[index].quantity = 1;
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartCount = document.querySelector('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartSummary = document.getElementById('cartSummary');
+            const cartEmpty = document.getElementById('cartEmpty');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                cartSummary.style.display = 'none';
+                cartEmpty.style.display = 'block';
+                return;
+            }
+
+            cartEmpty.style.display = 'none';
+            cartSummary.style.display = 'block';
+
+            cartItemsContainer.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <div class="cart-item-image">${item.emoji}</div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price} each</div>
+                        <div class="cart-item-controls">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                            <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotalAmount').textContent = `₹${total}`;
+            document.getElementById('qrAmount').textContent = `₹${total}`;
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById('cartModal');
+            cartModal.classList.toggle('active');
+            document.body.style.overflow = cartModal.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        // Razorpay Payment Integration
+        function payWithRazorpay() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (total === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const options = {
+                key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay Key ID
+                amount: total * 100, // Amount in paise
+                currency: 'INR',
+                name: 'Village Organics',
+                description: 'Organic Village Products',
+                image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Ctext y="50" font-size="50"%3E🌾%3C/text%3E%3C/svg%3E',
+                handler: function (response) {
+                    alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+                    // Send order confirmation to WhatsApp
+                    const orderDetails = cart.map(item => `${item.emoji} ${item.name} x${item.quantity} = ₹${item.price * item.quantity}`).join('%0A');
+                    window.open(`https://wa.me/919866186594?text=Order Confirmed!%0A%0A${orderDetails}%0A%0ATotal: ₹${total}%0APayment ID: ${response.razorpay_payment_id}`, '_blank');
+                    cart = [];
+                    updateCart();
+                    toggleCart();
+                },
+                prefill: {
+                    name: '',
+                    email: '',
+                    contact: ''
+                },
+                theme: {
+                    color: '#6b8e23'
+                }
+            };
+
+            const razorpay = new Razorpay(options);
+            razorpay.open();
+        }
+
+        // PhonePe QR Code
+        function showPhonePeQR() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (total === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            document.getElementById('qrModal').classList.add('active');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModal').classList.remove('active');
+        }
+
+        // WhatsApp Order
+        function orderOnWhatsApp() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (total === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const orderDetails = cart.map(item => 
+                `${item.emoji} ${item.name} x${item.quantity} = ₹${item.price * item.quantity}`
+            ).join('%0A');
+            
+            const message = `Hi! I want to order:%0A%0A${orderDetails}%0A%0ATotal: ₹${total}%0A%0APlease confirm my order.`;
+            
+            window.open(`https://wa.me/919866186594?text=${message}`, '_blank');
+        }
+
+        // Notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--sage-green);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                z-index: 9999;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1183,30 +1774,28 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({
-                        top: target.offsetTop - 100,
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
         });
-        
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.feature-card, .product-card, .testimonial-card').forEach(el => {
-            observer.observe(el);
+
+        // Close modals on outside click
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCart();
+            }
         });
+
+        document.getElementById('qrModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQRModal();
+            }
+        });
+
+        // Initialize
+        updateCart();
     </script>
 </body>
 </html>
