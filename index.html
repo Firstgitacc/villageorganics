@@ -26,16 +26,6 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
@@ -1623,6 +1613,7 @@
             </div>
             
             <div class="footer-bottom">
+			👥 Visitors: <span id="visitorCount">0</span>
                 <p>&copy; 2026 Village Organics. All rights reserved. Certified Organic | Chemical-Free | Farm Fresh</p>
             </div>
         </div>
@@ -1961,5 +1952,50 @@ window.onclick = function(event) {
     }
 };
     </script>
+	<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    updateDoc,
+    increment,
+    setDoc
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // Replace with your Firebase configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "XXXXXXXX",
+    appId: "XXXXXXXX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const counterRef = doc(db, "website", "counter");
+
+  async function updateCounter() {
+    const snap = await getDoc(counterRef);
+
+    if (!snap.exists()) {
+      await setDoc(counterRef, { count: 1 });
+      document.getElementById("visitorCount").innerText = 1;
+    } else {
+      await updateDoc(counterRef, {
+        count: increment(1)
+      });
+
+      const updated = await getDoc(counterRef);
+      document.getElementById("visitorCount").innerText =
+        updated.data().count;
+    }
+  }
+
+  updateCounter();
+</script>
 </body>
 </html>
