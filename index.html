@@ -48,7 +48,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </button>
-                <button class="menu-toggle">
+                <button class="menu-toggle" title="Toggle Navigation Menu" aria-label="Toggle Navigation Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -211,7 +211,7 @@
                         <div class="product-footer">
                             <div class="product-price">₹380/L <span class="delivery-charge">+ Delivery Charges*</span>
 							</div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed Sesame Oil', 380, '🥜')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Groundnut Oil', 380, '🥜')">
                                 Add to Cart
                             </button>
                         </div>
@@ -239,7 +239,7 @@
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹380/L <span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed coconut Oil', 380, '🛢️')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 380, '🥥')">
                                 Add to Cart
                             </button>
                         </div>
@@ -404,7 +404,7 @@
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="https://wa.me/919394115555?text=Hi! I'm interested in your organic products" class="social-link" target="_blank">
+                        <a href="https://wa.me/919394115555?text=Hi! I'm interested in your organic products" class="social-link" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -451,6 +451,23 @@
             </div>
             
             <div id="cartItemsContainer" class="cart-items"></div>
+            
+            <!-- Customer details form -->
+            <div class="customer-details-form">
+                <h3>Delivery Details</h3>
+                <div class="form-group">
+                    <label for="customerName">Customer Name</label>
+                    <input type="text" id="customerName" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Mobile Number</label>
+                    <input type="tel" id="customerPhone" placeholder="Enter your mobile number">
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Delivery Address</label>
+                    <textarea id="customerAddress" rows="3" placeholder="Enter your delivery address"></textarea>
+                </div>
+            </div>
             
             <div class="cart-summary" id="cartSummary" style="display: none;">
                 <div class="cart-total">
@@ -516,6 +533,7 @@
     <a href="https://wa.me/919394115555?text=Hi! I want to order organic products from Village Organics" 
        class="whatsapp-float" 
        target="_blank"
+       rel="noopener noreferrer"
        title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -692,13 +710,27 @@
                 return;
             }
 
-            const orderDetails = cart.map(item => 
-                `${item.emoji} ${item.name} x${item.quantity} = ₹${item.price * item.quantity}`
-            ).join('%0A');
-            
-            const message = `Hi! I want to order:%0A%0A${orderDetails}%0A%0ATotal: ₹${total}%0A%0APlease confirm my order.`;
-            
-            window.open(`https://wa.me/919394115555?text=${message}`, '_blank');
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+
+            if (!customerName || !customerPhone || !customerAddress) {
+                alert('Please fill in your name, mobile number, and delivery address before ordering.');
+                return;
+            }
+
+            const orderItems = cart.map(item => `- ${item.name} x ${item.quantity} = \u20B9${item.price * item.quantity}`).join('\n');
+
+            const message = '\uD83C\uDF3E Village Organics Order\n\n' +
+                '\uD83D\uDC64 Customer:\n' + customerName + '\n\n' +
+                '\uD83D\uDCDE Phone:\n' + customerPhone + '\n\n' +
+                '\uD83C\uDFE0 Address:\n' + customerAddress + '\n\n' +
+                '\uD83D\uDED2 Products:\n' + orderItems + '\n\n' +
+                '\uD83D\uDCB0 Total Amount:\n\u20B9' + total + '\n\n' +
+                'Please confirm my order.';
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://api.whatsapp.com/send?phone=919394115555&text=${encodedMessage}`, '_blank');
         }
 
         // Notification

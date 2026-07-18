@@ -775,6 +775,65 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
+
+        .customer-details-form {
+            background: white;
+            border: 3px solid var(--earth-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .customer-details-form h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--earth-dark);
+            margin-bottom: 1rem;
+        }
+
+        .customer-details-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .customer-details-form label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .customer-details-form input,
+        .customer-details-form textarea {
+            width: 100%;
+            border: 2px solid var(--sand);
+            border-radius: 12px;
+            padding: 0.9rem 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background: #fffdf8;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .customer-details-form input:focus,
+        .customer-details-form textarea:focus {
+            outline: none;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 4px rgba(107, 142, 35, 0.12);
+        }
+
+        .customer-details-form textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        @media (max-width: 600px) {
+            .customer-details-form {
+                padding: 1rem;
+            }
+        }
         
         .payment-btn {
             width: 100%;
