@@ -27,94 +27,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href = "css/style.css"/>
     
-    <style>
-        .pin-input-row {
-            display: grid;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .pin-status {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-            min-height: 1.2rem;
-            color: var(--text-light);
-        }
-
-        .pin-status.info {
-            color: #3f612d;
-        }
-
-        .pin-status.success {
-            color: #157f4c;
-        }
-
-        .pin-status.error {
-            color: #9d2235;
-        }
-
-        .pin-loader {
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(0, 0, 0, 0.15);
-            border-top-color: var(--sage-green);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .pin-loader.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .cart-summary-highlight {
-            background: rgba(107, 142, 35, 0.05);
-            border: 1px solid rgba(107, 142, 35, 0.15);
-            border-radius: 16px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .cart-summary-highlight .summary-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(44, 24, 16, 0.08);
-        }
-
-        .cart-summary-highlight .summary-row:last-child {
-            border-bottom: none;
-        }
-
-        .cart-summary-highlight .delivery-row {
-            font-weight: 700;
-            color: var(--earth-dark);
-        }
-
-        .cart-summary-highlight .grand-total-row {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--forest-green);
-        }
-
-        .delivery-note {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-    </style>
+    <!-- Styles moved to css/style.css -->
+</head>
+<body>
 </head>
 <body>
     <!-- Navigation -->
@@ -628,7 +543,14 @@
                 (PhonePe, Google Pay, Paytm, etc.)
             </p>
             <div class="qr-amount" id="qrAmount">₹0</div>
-            <div class="upi-id">9394115555@ybl</div>
+            <div class="upi-bubble-wrap">
+                <div class="upi-bubble" role="status" aria-live="polite">
+                    <span class="upi-text" id="upiIdText">9394115555@ybl</span>
+                </div>
+                <button id="copyUpiBtn" class="copy-upi-btn" title="Copy UPI ID" onclick="copyUPIId()">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
+                </button>
+            </div>
             <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">
                 After payment, please WhatsApp the screenshot to<br>
                 <strong>+91 9394115555</strong>
@@ -1020,6 +942,71 @@
                 notification.style.animation = 'slideOut 0.3s ease-out';
                 setTimeout(() => notification.remove(), 300);
             }, 2000);
+        }
+
+        // Clipboard helper used by UPI copy and other copy actions
+        function copyTextToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise((resolve, reject) => {
+                try {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.left = '-9999px';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    if (document.execCommand('copy')) {
+                        document.body.removeChild(textarea);
+                        resolve();
+                    } else {
+                        document.body.removeChild(textarea);
+                        reject();
+                    }
+                } catch (e) {
+                    reject(e);
+                }
+            });
+        }
+
+        // Copy the UPI ID and animate the copy button + show toast
+        function copyUPIId() {
+            const upiEl = document.getElementById('upiIdText');
+            if (!upiEl) return;
+            const upi = upiEl.textContent.trim();
+            const btn = document.getElementById('copyUpiBtn');
+            const icon = btn && btn.querySelector('i');
+
+            copyTextToClipboard(upi).then(() => {
+                if (icon) icon.className = 'fas fa-check';
+                if (btn) btn.classList.add('copied', 'animate');
+                showNotification('UPI ID copied successfully!');
+                // revert after 2s
+                setTimeout(() => {
+                    if (icon) icon.className = 'fas fa-copy';
+                    if (btn) btn.classList.remove('copied');
+                }, 2000);
+                // remove quick scale class after short time
+                setTimeout(() => { if (btn) btn.classList.remove('animate'); }, 300);
+            }).catch(() => {
+                // Fallback: insert a temporary textarea, select it and prompt user to press Ctrl/Cmd+C
+                try {
+                    const tmp = document.createElement('textarea');
+                    tmp.value = upi;
+                    tmp.style.position = 'fixed';
+                    tmp.style.left = '-9999px';
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    tmp.setSelectionRange(0, tmp.value.length);
+                    tmp.focus();
+                    showNotification('Unable to copy automatically. UPI ID selected — press Ctrl/Cmd+C to copy.');
+                    // clean up after 6 seconds
+                    setTimeout(() => tmp.remove(), 6000);
+                } catch (e) {
+                    showNotification('Unable to copy UPI ID. Please copy manually: ' + upi);
+                }
+            });
         }
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
