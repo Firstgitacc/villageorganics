@@ -28,7 +28,92 @@
 <link rel="stylesheet" href = "css/style.css"/>
     
     <style>
-       
+        .pin-input-row {
+            display: grid;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pin-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            min-height: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .pin-status.info {
+            color: #3f612d;
+        }
+
+        .pin-status.success {
+            color: #157f4c;
+        }
+
+        .pin-status.error {
+            color: #9d2235;
+        }
+
+        .pin-loader {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.15);
+            border-top-color: var(--sage-green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .pin-loader.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cart-summary-highlight {
+            background: rgba(107, 142, 35, 0.05);
+            border: 1px solid rgba(107, 142, 35, 0.15);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .cart-summary-highlight .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(44, 24, 16, 0.08);
+        }
+
+        .cart-summary-highlight .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .cart-summary-highlight .delivery-row {
+            font-weight: 700;
+            color: var(--earth-dark);
+        }
+
+        .cart-summary-highlight .grand-total-row {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--forest-green);
+        }
+
+        .delivery-note {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -467,14 +552,36 @@
                     <label for="customerAddress">Delivery Address</label>
                     <textarea id="customerAddress" rows="3" placeholder="Enter your delivery address"></textarea>
                 </div>
+                <div class="form-group pin-input-row">
+                    <label for="customerPincode">PIN Code</label>
+                    <input type="text" id="customerPincode" maxlength="6" placeholder="Enter 6-digit PIN code" pattern="\d{6}" inputmode="numeric">
+                    <div class="pin-status info" id="pincodeStatus">
+                        <span class="pin-loader" id="pinLoader" aria-hidden="true"></span>
+                        <span id="pincodeStatusText">Enter your 6-digit PIN code to verify delivery availability.</span>
+                    </div>
+                </div>
             </div>
             
             <div class="cart-summary" id="cartSummary" style="display: none;">
-                <div class="cart-total">
-                    <span class="cart-total-label">Total Amount:</span>
-                    <span class="cart-total-amount" id="cartTotalAmount">₹0</span>
+                <div class="cart-summary-highlight">
+                    <div class="summary-row">
+                        <span>Products Total</span>
+                        <span id="productSubtotalAmount">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total Weight</span>
+                        <span id="totalWeightAmount">0.00 kg</span>
+                    </div>
+                    <div class="summary-row delivery-row">
+                        <span>Delivery Charges</span>
+                        <span id="deliveryChargeAmount">₹0</span>
+                    </div>
+                    <div class="summary-row grand-total-row">
+                        <span>Grand Total</span>
+                        <span id="grandTotalAmount">₹0</span>
+                    </div>
                 </div>
-                
+                <div class="delivery-note" id="deliveryNote">Enter your PIN code to calculate delivery charges.</div>
                 <div class="payment-options">
                     <button class="payment-btn" onclick="payWithRazorpay()">
                         <div class="payment-icon">💳</div>
@@ -564,23 +671,42 @@
 </div>
 
     <script>
-        // Cart Management
+        const deliveryRates = {
+            'Andhra Pradesh': { firstKg: 60, additionalKg: 40 },
+            'Telangana': { firstKg: 60, additionalKg: 40 },
+            'Karnataka': { firstKg: 100, additionalKg: 50 },
+            'Maharashtra': { firstKg: 120, additionalKg: 60 }
+        };
+
         let cart = [];
+        let detectedState = null;
+        let pincodeVerified = false;
+        let totalProductPrice = 0;
+        let totalWeight = 0;
+        let deliveryCharge = 0;
+
+        const defaultWeights = {
+            'Cold-Pressed Sesame Oil': 1,
+            'Groundnut Oil': 1,
+            'Coconut Oil': 1,
+            'Organic Sesame Seeds': 1,
+            'Telaga Pindi Sesame Oil Residue': 1,
+            'Fresh Village Coconuts': 1
+        };
 
         function addToCart(name, price, emoji) {
             const existingItem = cart.find(item => item.name === name);
-            
             if (existingItem) {
-                existingItem.quantity++;
+                existingItem.quantity += 1;
             } else {
                 cart.push({
-                    name: name,
-                    price: price,
-                    emoji: emoji,
-                    quantity: 1
+                    name,
+                    price,
+                    emoji,
+                    quantity: 1,
+                    weight: defaultWeights[name] || 1
                 });
             }
-            
             updateCart();
             showNotification(`${name} added to cart!`);
         }
@@ -591,14 +717,61 @@
         }
 
         function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity < 1) {
-                cart[index].quantity = 1;
-            }
+            cart[index].quantity = Math.max(1, cart[index].quantity + change);
             updateCart();
         }
 
-        function updateCart() {
+        function validatePincode(pincode) {
+            return /^\d{6}$/.test(pincode);
+        }
+
+        async function fetchStateFromPincode(pincode) {
+            const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+            if (!response.ok) {
+                throw new Error('API/network failure');
+            }
+            const data = await response.json();
+            if (!Array.isArray(data) || data.length === 0) {
+                throw new Error('Unable to verify PIN code');
+            }
+            const result = data[0];
+            if (result.Status !== 'Success' || !Array.isArray(result.PostOffice) || result.PostOffice.length === 0) {
+                throw new Error('Invalid PIN code');
+            }
+            const state = result.PostOffice[0].State?.trim();
+            if (!state) {
+                throw new Error('Unable to verify PIN code');
+            }
+            return state;
+        }
+
+        function calculateCartWeight() {
+            return cart.reduce((sum, item) => sum + item.weight * item.quantity, 0);
+        }
+
+        function calculateProductSubtotal() {
+            return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        }
+
+        function calculateDelivery(weight, state) {
+            if (!state || weight === 0) {
+                return 0;
+            }
+            const rates = deliveryRates[state];
+            if (!rates) {
+                return 0;
+            }
+            if (weight <= 1) {
+                return rates.firstKg;
+            }
+            return rates.firstKg + ((Math.ceil(weight) - 1) * rates.additionalKg);
+        }
+
+        function calculateGrandTotal(subtotal, delivery) {
+            return subtotal + delivery;
+        }
+
+        function updateCartSummary() {
             const cartCount = document.querySelector('.cart-count');
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
@@ -606,11 +779,14 @@
             const cartItemsContainer = document.getElementById('cartItemsContainer');
             const cartSummary = document.getElementById('cartSummary');
             const cartEmpty = document.getElementById('cartEmpty');
+            const deliveryNote = document.getElementById('deliveryNote');
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '';
                 cartSummary.style.display = 'none';
                 cartEmpty.style.display = 'block';
+                deliveryNote.textContent = '';
+                updatePaymentAmount(0);
                 return;
             }
 
@@ -635,46 +811,152 @@
                 </div>
             `).join('');
 
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            document.getElementById('cartTotalAmount').textContent = `₹${total}`;
-            document.getElementById('qrAmount').textContent = `₹${total}`;
+            totalWeight = calculateCartWeight();
+            totalProductPrice = calculateProductSubtotal();
+            deliveryCharge = pincodeVerified ? calculateDelivery(totalWeight, detectedState) : 0;
+            const grandTotal = calculateGrandTotal(totalProductPrice, deliveryCharge);
+
+            document.getElementById('productSubtotalAmount').textContent = `₹${totalProductPrice}`;
+            document.getElementById('totalWeightAmount').textContent = `${totalWeight.toFixed(2)} kg`;
+            document.getElementById('deliveryChargeAmount').textContent = `₹${deliveryCharge}`;
+            document.getElementById('grandTotalAmount').textContent = `₹${grandTotal}`;
+            document.getElementById('qrAmount').textContent = `₹${grandTotal}`;
+            updatePaymentAmount(grandTotal);
+
+            if (!document.getElementById('customerPincode').value.trim()) {
+                deliveryNote.textContent = 'Enter your PIN code to calculate delivery charges.';
+            } else if (!pincodeVerified) {
+                deliveryNote.textContent = 'Delivery charges are unavailable until the PIN code is verified.';
+            } else {
+                deliveryNote.textContent = `Delivery charges calculated for ${detectedState}.`;
+            }
         }
 
-        function toggleCart() {
-            const cartModal = document.getElementById('cartModal');
-            cartModal.classList.toggle('active');
-            document.body.style.overflow = cartModal.classList.contains('active') ? 'hidden' : 'auto';
+        function updatePaymentAmount(grandTotal) {
+            document.getElementById('grandTotalAmount').textContent = `₹${grandTotal}`;
+            document.getElementById('qrAmount').textContent = `₹${grandTotal}`;
         }
 
-        // Razorpay Payment Integration
-        function payWithRazorpay() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            if (total === 0) {
-                alert('Your cart is empty!');
+        function setPincodeStatus(message, type) {
+            const statusEl = document.getElementById('pincodeStatus');
+            const statusText = document.getElementById('pincodeStatusText');
+            statusText.textContent = message;
+            statusEl.className = `pin-status ${type}`;
+        }
+
+        async function handlePincodeChange() {
+            const pincodeInput = document.getElementById('customerPincode');
+            const pincode = pincodeInput.value.trim();
+            const loader = document.getElementById('pinLoader');
+
+            if (!pincode) {
+                detectedState = null;
+                pincodeVerified = false;
+                loader.classList.remove('active');
+                setPincodeStatus('Enter your 6-digit PIN code to verify delivery availability.', 'info');
+                updateCartSummary();
+                return;
+            }
+            if (!validatePincode(pincode)) {
+                detectedState = null;
+                pincodeVerified = false;
+                loader.classList.remove('active');
+                setPincodeStatus('Invalid PIN code. Please enter exactly 6 numeric digits.', 'error');
+                updateCartSummary();
                 return;
             }
 
+            setPincodeStatus('Verifying PIN code…', 'info');
+            loader.classList.add('active');
+
+            try {
+                const state = await fetchStateFromPincode(pincode);
+                loader.classList.remove('active');
+                if (!deliveryRates[state]) {
+                    detectedState = null;
+                    pincodeVerified = false;
+                    setPincodeStatus('Unsupported delivery location. Please enter a different PIN code.', 'error');
+                } else {
+                    detectedState = state;
+                    pincodeVerified = true;
+                    setPincodeStatus(`PIN code verified for ${state}. Delivery is available.`, 'success');
+                }
+            } catch (error) {
+                loader.classList.remove('active');
+                detectedState = null;
+                pincodeVerified = false;
+                const message = error.message === 'API/network failure'
+                    ? 'API/network failure. Please try again.'
+                    : error.message === 'Invalid PIN code'
+                        ? 'Invalid PIN code. Please check and try again.'
+                        : 'Unable to verify PIN code. Please try again.';
+                setPincodeStatus(message, 'error');
+            }
+            updateCartSummary();
+        }
+
+        function generateWhatsAppMessage(grandTotal) {
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+            const customerPincode = document.getElementById('customerPincode').value.trim();
+            const productLines = cart.map(item => `- ${item.name} x${item.quantity} = ₹${item.price * item.quantity}`).join('\n');
+
+            return `🌿 Village Organics Order\n\n` +
+                `👤 Customer Name:\n${customerName}\n\n` +
+                `📞 Phone Number:\n${customerPhone}\n\n` +
+                `🏠 Full Address:\n${customerAddress}\n\n` +
+                `📮 PIN Code:\n${customerPincode}\n\n` +
+                `📍 Detected State:\n${detectedState || 'Not verified'}\n\n` +
+                `🛒 Products:\n${productLines}\n\n` +
+                `⚖️ Total Weight:\n${totalWeight.toFixed(2)} kg\n\n` +
+                `💰 Products Total:\n₹${totalProductPrice}\n\n` +
+                `🚚 Delivery Charge:\n₹${deliveryCharge}\n\n` +
+                `🧾 Grand Total:\n₹${grandTotal}\n\n` +
+                `Please confirm my order.`;
+        }
+
+        function checkCheckoutReady() {
+            const pincode = document.getElementById('customerPincode').value.trim();
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return false;
+            }
+            if (!pincodeVerified || !detectedState) {
+                alert('Please verify a valid PIN code before checkout.');
+                return false;
+            }
+            return true;
+        }
+
+        function payWithRazorpay() {
+            if (!checkCheckoutReady()) {
+                return;
+            }
+
+            const grandTotal = calculateGrandTotal(totalProductPrice, deliveryCharge);
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+
             const options = {
-                key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay Key ID
-                amount: total * 100, // Amount in paise
+                key: 'YOUR_RAZORPAY_KEY_ID',
+                amount: grandTotal * 100,
                 currency: 'INR',
                 name: 'Village Organics',
                 description: 'Organic Village Products',
                 image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Ctext y="50" font-size="50"%3E🌾%3C/text%3E%3C/svg%3E',
                 handler: function (response) {
                     alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
-                    // Send order confirmation to WhatsApp
-                    const orderDetails = cart.map(item => `${item.emoji} ${item.name} x${item.quantity} = ₹${item.price * item.quantity}`).join('%0A');
-                    window.open(`https://wa.me/919394115555?text=Order Confirmed!%0A%0A${orderDetails}%0A%0ATotal: ₹${total}%0APayment ID: ${response.razorpay_payment_id}`, '_blank');
+                    const text = encodeURIComponent(generateWhatsAppMessage(grandTotal) + `\n\nPayment ID: ${response.razorpay_payment_id}`);
+                    window.open(`https://wa.me/919394115555?text=${text}`, '_blank');
                     cart = [];
                     updateCart();
                     toggleCart();
                 },
                 prefill: {
-                    name: '',
+                    name: customerName,
                     email: '',
-                    contact: ''
+                    contact: customerPhone
                 },
                 theme: {
                     color: '#6b8e23'
@@ -685,15 +967,12 @@
             razorpay.open();
         }
 
-        // PhonePe QR Code
         function showPhonePeQR() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            if (total === 0) {
-                alert('Your cart is empty!');
+            if (!checkCheckoutReady()) {
                 return;
             }
-
+            const grandTotal = calculateGrandTotal(totalProductPrice, deliveryCharge);
+            document.getElementById('qrAmount').textContent = `₹${grandTotal}`;
             document.getElementById('qrModal').classList.add('active');
         }
 
@@ -701,39 +980,24 @@
             document.getElementById('qrModal').classList.remove('active');
         }
 
-        // WhatsApp Order
         function orderOnWhatsApp() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            if (total === 0) {
-                alert('Your cart is empty!');
+            if (!checkCheckoutReady()) {
                 return;
             }
 
             const customerName = document.getElementById('customerName').value.trim();
             const customerPhone = document.getElementById('customerPhone').value.trim();
             const customerAddress = document.getElementById('customerAddress').value.trim();
-
             if (!customerName || !customerPhone || !customerAddress) {
                 alert('Please fill in your name, mobile number, and delivery address before ordering.');
                 return;
             }
 
-            const orderItems = cart.map(item => `- ${item.name} x ${item.quantity} = \u20B9${item.price * item.quantity}`).join('\n');
-
-            const message = '\uD83C\uDF3E Village Organics Order\n\n' +
-                '\uD83D\uDC64 Customer:\n' + customerName + '\n\n' +
-                '\uD83D\uDCDE Phone:\n' + customerPhone + '\n\n' +
-                '\uD83C\uDFE0 Address:\n' + customerAddress + '\n\n' +
-                '\uD83D\uDED2 Products:\n' + orderItems + '\n\n' +
-                '\uD83D\uDCB0 Total Amount:\n\u20B9' + total + '\n\n' +
-                'Please confirm my order.';
-
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://api.whatsapp.com/send?phone=919394115555&text=${encodedMessage}`, '_blank');
+            const grandTotal = calculateGrandTotal(totalProductPrice, deliveryCharge);
+            const message = encodeURIComponent(generateWhatsAppMessage(grandTotal));
+            window.open(`https://api.whatsapp.com/send?phone=919394115555&text=${message}`, '_blank');
         }
 
-        // Notification
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -742,70 +1006,75 @@
                 right: 20px;
                 background: var(--sage-green);
                 color: white;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.25);
                 z-index: 9999;
                 font-family: 'Montserrat', sans-serif;
-                font-weight: 600;
+                font-weight: 700;
                 animation: slideIn 0.3s ease-out;
             `;
             notification.textContent = message;
             document.body.appendChild(notification);
-
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease-out';
                 setTimeout(() => notification.remove(), 300);
             }, 2000);
         }
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                 }
             });
         });
 
-        // Close modals on outside click
-        document.getElementById('cartModal').addEventListener('click', function(e) {
+        document.getElementById('customerPincode').addEventListener('input', () => {
+            window.clearTimeout(window.pincodeTimer);
+            window.pincodeTimer = window.setTimeout(handlePincodeChange, 350);
+        });
+
+        document.getElementById('cartModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 toggleCart();
             }
         });
 
-        document.getElementById('qrModal').addEventListener('click', function(e) {
+        document.getElementById('qrModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeQRModal();
             }
         });
 
-        // Initialize
-        updateCart();
+        function toggleCart() {
+            const cartModal = document.getElementById('cartModal');
+            cartModal.classList.toggle('active');
+            document.body.style.overflow = cartModal.classList.contains('active') ? 'hidden' : 'auto';
+        }
 
-// Show modal after page loads
-window.onload = function () {
-    document.getElementById("offersModal").style.display = "flex";
-};
+        function updateCart() {
+            updateCartSummary();
+        }
 
-// Close modal
-function closeModal() {
-    document.getElementById("offersModal").style.display = "none";
-}
+        function closeModal() {
+            document.getElementById('offersModal').style.display = 'none';
+        }
 
-// Close when clicking outside the modal
-window.onclick = function(event) {
-    const modal = document.getElementById("offersModal");
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-};
+        window.onload = function () {
+            document.getElementById('offersModal').style.display = 'flex';
+            updateCart();
+            setPincodeStatus('Enter your 6-digit PIN code to verify delivery availability.', 'info');
+        };
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('offersModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
     </script>
 	<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
