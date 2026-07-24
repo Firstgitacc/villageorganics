@@ -467,6 +467,13 @@
             display: block;
             border-radius: 12px;
             background: transparent;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            transform-origin: center center;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.12) translateY(-4px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
         }
 
         .product-image--photo {
