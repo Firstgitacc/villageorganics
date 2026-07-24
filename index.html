@@ -183,7 +183,7 @@
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹420/L <span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed Sesame Oil', 420, '🛢️')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed Sesame Oil', 420, '🛢️', 'images/Cold-Pressed%20Sesame%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -211,7 +211,7 @@
                         <div class="product-footer">
                             <div class="product-price">₹380/L <span class="delivery-charge">+ Delivery Charges*</span>
 							</div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Groundnut Oil', 380, '🥜')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Groundnut Oil', 380, '🥜', 'images/Groundnut%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -239,7 +239,7 @@
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹380/L <span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 380, '🥥')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 380, '🥥', 'images/Coconut%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -293,7 +293,7 @@
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹220/kg<span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Organic Sesame Seeds', 220, '🌾')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Organic Sesame Seeds', 220, '🌾', 'images/Organic%20Sesame%20Seeds.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -616,7 +616,7 @@
             'Fresh Village Coconuts': 1
         };
 
-        function addToCart(name, price, emoji) {
+        function addToCart(name, price, emoji, imagePath) {
             const existingItem = cart.find(item => item.name === name);
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -625,6 +625,7 @@
                     name,
                     price,
                     emoji,
+                    image: imagePath || null,
                     quantity: 1,
                     weight: defaultWeights[name] || 1
                 });
@@ -717,7 +718,9 @@
 
             cartItemsContainer.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
-                    <div class="cart-item-image">${item.emoji}</div>
+                    <div class="cart-item-image">
+                        ${item.image ? `<img src="${item.image}" alt="${item.name}" class="cart-item-thumb">` : `<span class="cart-item-emoji">${item.emoji || '🛒'}</span>`}
+                    </div>
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
                         <div class="cart-item-price">₹${item.price} each</div>
