@@ -238,8 +238,8 @@
                             <li>Chemical-free & preservative-free</li>
                         </ul>
                         <div class="product-footer">
-                            <div class="product-price">₹380/L <span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 380, '🥥', 'images/Coconut%20Oil.jpeg')">
+                            <div class="product-price">₹320/L <span class="delivery-charge">+ Delivery Charges*</span></div>
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 320, '🥥', 'images/Coconut%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -302,7 +302,6 @@
 				
 				<div class="product-card">
                     <div class="product-image">
-                        🌾🥣
 						<img src="images/telaga-pindi-sesame-oil-residue-removebg-preview.png" alt="telagapindi"  style="width:150px; height:150px; object-fit:contain; background-color:transparent;"/>
                         <span class="product-badge">Best Seller</span>
                     </div>
@@ -321,7 +320,7 @@
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">₹49/kg<span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Telaga Pindi Sesame Oil Residue', 49, '🛢️')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Telaga Pindi Sesame Oil Residue', 49, '🛢️', 'images/telaga-pindi-sesame-oil-residue-removebg-preview.png')">
                                 Add to Cart
                             </button>
                         </div>
@@ -498,13 +497,13 @@
                 </div>
                 <div class="delivery-note" id="deliveryNote">Enter your PIN code to calculate delivery charges.</div>
                 <div class="payment-options">
-                    <button class="payment-btn" onclick="payWithRazorpay()">
+                    <!-- <button class="payment-btn" onclick="payWithRazorpay()">
                         <div class="payment-icon">💳</div>
                         <div>
                             <div>Pay with Razorpay</div>
                             <small style="color: var(--text-light); font-weight: 400;">Card, UPI, Net Banking, Wallets</small>
                         </div>
-                    </button>
+                    </button> -->
                     
                     <button class="payment-btn" onclick="showPhonePeQR()">
                         <div class="payment-icon">📱</div>
@@ -597,7 +596,8 @@
             'Andhra Pradesh': { firstKg: 60, additionalKg: 40 },
             'Telangana': { firstKg: 60, additionalKg: 40 },
             'Karnataka': { firstKg: 100, additionalKg: 50 },
-            'Maharashtra': { firstKg: 120, additionalKg: 60 }
+            'Maharashtra': { firstKg: 120, additionalKg: 60 },
+            'Tamil Nadu': { firstKg: 100, additionalKg: 50 }
         };
 
         let cart = [];
