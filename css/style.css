@@ -1312,6 +1312,16 @@
     line-height: 1.6;
 }
 
+.offer-highlight {
+    display: inline-block;
+    color: #2d5016;
+    font-weight: 700;
+    background: rgba(107, 142, 35, 0.12);
+    padding: 0.12rem 0.6rem;
+    border-radius: 999px;
+    margin: 0 0.15rem;
+}
+
 .close-btn {
     position: absolute;
     top: 10px;
