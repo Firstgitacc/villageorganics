@@ -560,6 +560,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--terracotta);
+            /* line-height: 1.1; */
         }
         .product-price .delivery-charge {
     font-size: 0.55em;
@@ -567,6 +568,22 @@
     color: #666;
     vertical-align: middle;
 }
+.delivery-free {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #2e7d32;
+    background: rgba(46, 125, 50, 0.08);
+    border: 1px solid rgba(46, 125, 50, 0.2);
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.08);
+}
+
         .btn-small {
             padding: 0.7rem 1.3rem;
             font-size: 0.85rem;
