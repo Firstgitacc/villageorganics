@@ -182,8 +182,8 @@
                             <li>Chemical-free & preservative-free</li>
                         </ul>
                         <div class="product-footer">
-                            <div class="product-price">₹420/L <span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed Sesame Oil', 420, '🛢️', 'images/Cold-Pressed%20Sesame%20Oil.jpeg')">
+                            <div class="product-price">₹450/L <span class="delivery-free">+ Delivery Free</span></div>
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Cold-Pressed Sesame Oil', 450, '🛢️', 'images/Cold-Pressed%20Sesame%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -209,9 +209,9 @@
                             <li>Chemical-free & preservative-free</li>
                         </ul>
                         <div class="product-footer">
-                            <div class="product-price">₹380/L <span class="delivery-charge">+ Delivery Charges*</span>
+                            <div class="product-price">₹410/L <span class="delivery-free">+ Delivery Free</span>
 							</div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Groundnut Oil', 380, '🥜', 'images/Groundnut%20Oil.jpeg')">
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Groundnut Oil', 410, '🥜', 'images/Groundnut%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -238,8 +238,8 @@
                             <li>Chemical-free & preservative-free</li>
                         </ul>
                         <div class="product-footer">
-                            <div class="product-price">₹320/L <span class="delivery-charge">+ Delivery Charges*</span></div>
-                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 320, '🥥', 'images/Coconut%20Oil.jpeg')">
+                            <div class="product-price">₹350/L <span class="delivery-free">+ Delivery Free</span></div>
+                            <button class="btn btn-primary btn-small" onclick="addToCart('Coconut Oil', 350, '🥥', 'images/Coconut%20Oil.jpeg')">
                                 Add to Cart
                             </button>
                         </div>
@@ -505,13 +505,13 @@
                         </div>
                     </button> -->
                     
-                    <button class="payment-btn" onclick="showPhonePeQR()">
+                    <!-- <button class="payment-btn" onclick="showPhonePeQR()">
                         <div class="payment-icon">📱</div>
                         <div>
                             <div>Pay with PhonePe</div>
                             <small style="color: var(--text-light); font-weight: 400;">Scan QR Code</small>
                         </div>
-                    </button>
+                    </button> -->
                     
                     <button class="payment-btn" onclick="orderOnWhatsApp()">
                         <div class="payment-icon" style="background: #25D366; color: white;"><i class="fab fa-whatsapp"></i></div>
@@ -611,6 +611,12 @@
         const storeCoordinates = { lat: 16.7608, lon: 81.8435 };
         const freeDeliveryRadiusKm = 10;
 
+        const freeDeliveryProductNames = new Set([
+            'Cold-Pressed Sesame Oil',
+            'Groundnut Oil',
+            'Coconut Oil'
+        ]);
+
         const defaultWeights = {
             'Cold-Pressed Sesame Oil': 1,
             'Groundnut Oil': 1,
@@ -702,7 +708,12 @@
         }
 
         function calculateCartWeight() {
-            return cart.reduce((sum, item) => sum + item.weight * item.quantity, 0);
+            return cart.reduce((sum, item) => {
+                if (freeDeliveryProductNames.has(item.name)) {
+                    return sum;
+                }
+                return sum + item.weight * item.quantity;
+            }, 0);
         }
 
         function calculateProductSubtotal() {
