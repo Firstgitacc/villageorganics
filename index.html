@@ -1120,7 +1120,11 @@
 
             if (hasVisitedBefore) {
                 offerTitle.textContent = 'Welcome Back!';
-                offerMessage.textContent = 'You are already a valued customer. Delivery is free within 10 km of our store, and charges apply beyond that distance.';
+                offerMessage.innerHTML = `
+                    You are already a valued customer.
+                    <span class="offer-highlight">Oil delivery is free.</span>
+                    Charges apply only for whole grains, telaga pondi, sesame oil residue, and village coconuts.
+                `;
             } else {
                 offerTitle.textContent = 'Free Delivery Within 10 km!';
                 offerMessage.textContent = 'Delivery is free for orders within 10 km of our store. For locations beyond 10 km, delivery charges are calculated based on the distance from the store.';
